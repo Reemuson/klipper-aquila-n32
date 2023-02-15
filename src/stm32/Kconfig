@@ -233,6 +233,15 @@ config STM32F103GD_DISABLE_SWD
         and PA14 pins from being available. Selecting this option
         disables SWD at startup and thus makes these pins available.
 
+config N32G452
+    bool "Build for Nation N32G45x MCU"
+    depends on MACH_STM32F103 && LOW_LEVEL_OPTIONS
+    default n
+    help
+        Some Voxelab Aquila motherboards have N32G452 chip instead of
+        GD32F103. This cortex-M4 chip is very similar to F103 but
+        have different ADC. Enable this option to make ADC working.
+
 config STM32_DFU_ROM_ADDRESS
     hex
     default 0 if !USB
@@ -241,7 +250,6 @@ config STM32_DFU_ROM_ADDRESS
     default 0x1fff0000 if MACH_STM32F4 || MACH_STM32G0 || MACH_STM32G4 || MACH_STM32L4
     default 0x1ff09800 if MACH_STM32H7
     default 0
-
 
 ######################################################################
 # Bootloader
